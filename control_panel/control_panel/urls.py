@@ -16,6 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from shedule import views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('lessons/', views.Lessons.as_view()),
+    path('f_lesson/', views.FirstLesson.as_view())
 ]
