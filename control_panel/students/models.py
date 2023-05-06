@@ -2,6 +2,9 @@ from django.db import models
 
 class Group(models.Model):
     name = models.CharField("Наименование", max_length=256)
+    
+    def __str__(self) -> str:
+        return self.name
 
 class User(models.Model):
     name = models.CharField("ФИО", max_length=256)
