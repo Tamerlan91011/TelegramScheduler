@@ -17,6 +17,7 @@ class AcademicCoupleAdmin(admin.ModelAdmin):
 
 class LessonAdmin(admin.ModelAdmin):
     list_display = ["week", "academic_couple_id", "type_name_id", "auditorium"]
+    radio_fields = {"week": admin.HORIZONTAL, "type_name": admin.HORIZONTAL}
 
 
 admin.site.register(LessonDate, LessonDateAdmin)
