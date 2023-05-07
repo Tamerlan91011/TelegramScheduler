@@ -20,6 +20,6 @@ from shedule import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('lessons/', views.Lessons.as_view()),
-    path('f_lesson/', views.FirstLesson.as_view())
+    path('lessons/', views.AllLessons.as_view()),
+    path('lessons/<int:pk>/', views.SingleLesson.as_view())
 ]
