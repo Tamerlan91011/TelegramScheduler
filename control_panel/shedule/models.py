@@ -1,12 +1,13 @@
 from django.db import models
 
 from students.models import Group
+from personnel.models import User as Teacher
 
 class LessonDate(models.Model):
     date = models.DateField("Дата проведения занятия", auto_now=False, auto_now_add=False, null=True)
     
     def __str__(self) -> str:
-        return self.date
+        return str(self.date)
 
 
 class LessonType(models.Model):
@@ -24,7 +25,11 @@ class AcademicCouple(models.Model):
 
 
 class Lesson(models.Model):
-    week = models.IntegerField()
+    WEEK_CHOICES = (
+        (1, "Первая"),
+        (2, "Вторая")
+    )
+    week = models.PositiveSmallIntegerField(default=int(1), choices=WEEK_CHOICES)
     auditorium = models.CharField(max_length=256, default="Не назначена")
     
     academic_couple = models.ForeignKey(AcademicCouple, null=True, on_delete=models.SET_NULL)
@@ -32,3 +37,5 @@ class Lesson(models.Model):
 
     group = models.ManyToManyField(Group)
     lesson_date = models.ManyToManyField(LessonDate)
+    
+    teacher =  models.ManyToManyField(Teacher)
