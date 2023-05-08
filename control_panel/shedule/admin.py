@@ -16,6 +16,7 @@ class AcademicCoupleAdmin(admin.ModelAdmin):
 
 
 class LessonAdmin(admin.ModelAdmin):
+    list_select_related = ["academic_couple", "type_name"]
     list_display = ["week", "academic_couple", "type_name", "auditorium"]
     radio_fields = {"week": admin.HORIZONTAL, "type_name": admin.HORIZONTAL}
 

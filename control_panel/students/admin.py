@@ -4,6 +4,7 @@ from .models import User,Group
 # Register your models here.
 
 class UserAdmin(admin.ModelAdmin):
+    list_select_related = ["group"]
     list_display = ["name", "student_card_number", "password", "telegram_chat_number", "group"]
 
 
