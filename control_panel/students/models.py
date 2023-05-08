@@ -8,8 +8,8 @@ class Group(models.Model):
 
 class User(models.Model):
     name = models.CharField("ФИО", max_length=256)
-    student_card_id = models.IntegerField("Номер студенческого билета")
+    student_card_number = models.IntegerField("Номер студенческого билета")
     password = models.CharField("Пароль", max_length=256)
-    chat_id = models.IntegerField("Номер чата в телеграм", null=True)
+    telegram_chat_number = models.IntegerField("Номер чата в телеграм", null=True)
     
     group = models.ForeignKey(Group, null=True, on_delete=models.SET_NULL)
