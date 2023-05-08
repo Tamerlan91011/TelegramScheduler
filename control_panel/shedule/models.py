@@ -50,8 +50,13 @@ class Lesson(models.Model):
     group = models.ManyToManyField(Group, verbose_name="Группа")
     lesson_date = models.ManyToManyField(LessonDate, verbose_name="Дата занятия")
     
-    teacher =  models.ManyToManyField(Teacher, verbose_name="Преподаватель")
+    teacher =  models.ManyToManyField(Teacher, verbose_name="Преподаватель", db_index=True)
 
     class Meta:
         verbose_name = "Занятие"
         verbose_name_plural = "Занятия"
+
+    def display_group(self):
+        return ', '.join(group.name for group in self.group.all()[:3])
+
+    display_group.short_description = 'Учебные группы'
