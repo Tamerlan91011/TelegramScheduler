@@ -44,8 +44,8 @@ class Lesson(models.Model):
     week = models.PositiveSmallIntegerField(default=int(1), choices=WEEK_CHOICES, verbose_name="Учебная неделя")
     auditorium = models.CharField(max_length=256, default="Не назначена", verbose_name="Аудитория")
     
-    academic_couple = models.ForeignKey(AcademicCouple, null=True, on_delete=models.SET_NULL, verbose_name="ID времени занятия")
-    type_name = models.ForeignKey(LessonType, null=True, on_delete=models.SET_NULL, verbose_name="ID типа занятия")
+    academic_couple = models.ForeignKey(AcademicCouple, null=True, on_delete=models.SET_NULL, verbose_name="Время занятий")
+    type_name = models.ForeignKey(LessonType, null=True, on_delete=models.SET_NULL, verbose_name="Тип занятия")
 
     group = models.ManyToManyField(Group, verbose_name="Группа")
     lesson_date = models.ManyToManyField(LessonDate, verbose_name="Дата занятия")
@@ -58,5 +58,9 @@ class Lesson(models.Model):
 
     def display_group(self):
         return ', '.join(group.name for group in self.group.all()[:3])
+    
+    def display_date(self):
+        return ', '.join(str(lesson_date.date) for lesson_date in self.lesson_date.all()[:3])
 
     display_group.short_description = 'Учебные группы'
+    display_date.short_description = 'Даты проведения занятий'
