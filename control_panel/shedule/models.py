@@ -35,7 +35,7 @@ class Lesson(models.Model):
     academic_couple = models.ForeignKey(AcademicCouple, null=True, on_delete=models.SET_NULL)
     type_name = models.ForeignKey(LessonType, null=True, on_delete=models.SET_NULL)
 
-    group = models.ManyToManyField(Group)
-    lesson_date = models.ManyToManyField(LessonDate)
+    group = models.ManyToManyField(Group, db_index=True)
+    lesson_date = models.ManyToManyField(LessonDate, db_index=True)
     
-    teacher =  models.ManyToManyField(Teacher)
+    teacher =  models.ManyToManyField(Teacher, db_index=True)
