@@ -63,7 +63,7 @@ class Lesson(models.Model):
         return ', '.join(group.name for group in self.group.all()[:4])
     
     def display_date(self):
-        return ', '.join(str(lesson_date.date.isoweekday()) for lesson_date in self.lesson_date.all()[:4])
+        return ', '.join(str(lesson_date.date) for lesson_date in self.lesson_date.all()[:4])
 
     def display_teacher(self):
         return ', '.join(teacher.name for teacher in self.teacher.all()[:4])
