@@ -29,8 +29,8 @@ class GroupLessonsWeek(APIView):
     def get(self, request, group_id, week_id):
         lesson = Lesson.objects.filter(group=group_id, week=week_id)
         return Response(LessonSerializer(lesson, many=True).data)
-    
-class DateID(APIView):
+
+class LessonDateByDate(APIView):
     def get(self, request, str_date):
-        lesson_date = LessonDate.objects.filter(date=str_date)
-        return Response(LessonDateSerializer(lesson_date, many=True).data)
+        lesson_date = LessonDate.objects.get(date=str_date)
+        return Response(LessonDateSerializer(lesson_date).data)
