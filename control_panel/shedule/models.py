@@ -52,6 +52,9 @@ class Lesson(models.Model):
     
     teacher =  models.ManyToManyField(Teacher, verbose_name="Преподаватель", db_index=True)
 
+    def __str__(self) -> str:
+        return f"{self.auditorium}, {self.type_name}"
+
     class Meta:
         verbose_name = "Занятие"
         verbose_name_plural = "Занятия"

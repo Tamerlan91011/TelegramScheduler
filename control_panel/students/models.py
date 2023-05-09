@@ -16,7 +16,10 @@ class User(models.Model):
     password = models.CharField(max_length=256, verbose_name="Пароль")
     telegram_chat_number = models.IntegerField(null=True, verbose_name="Номер чата в телеграм")
     
-    group = models.ForeignKey(Group, null=True, on_delete=models.SET_NULL, verbose_name="ID группы")
+    group = models.ForeignKey(Group, null=True, on_delete=models.SET_NULL, verbose_name="Группа")
+
+    def __str__(self) -> str:
+        return f"{self.name}, {self.student_card_number}"
 
     class Meta: 
         verbose_name = "Студент"
