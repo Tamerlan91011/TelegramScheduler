@@ -1,14 +1,19 @@
 from rest_framework import serializers
 
 
-from .models import Lesson, LessonDate
+from .models import Lesson, LessonDate, Group
 from personnel.models import User as Teacher
 
+
+class GroupSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Group
+        fields = ['id', 'name']
 
 class LessonDateSerializer(serializers.ModelSerializer):
     class Meta:
         model = LessonDate
-        fields = ['date']
+        fields = ['id', 'date']
 
        
 class TeacherSerializer(serializers.ModelSerializer):
