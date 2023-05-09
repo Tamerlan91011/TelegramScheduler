@@ -60,10 +60,14 @@ class Lesson(models.Model):
         verbose_name_plural = "Занятия"
 
     def display_group(self):
-        return ', '.join(group.name for group in self.group.all()[:3])
+        return ', '.join(group.name for group in self.group.all()[:4])
     
     def display_date(self):
-        return ', '.join(str(lesson_date.date) for lesson_date in self.lesson_date.all()[:3])
+        return ', '.join(str(lesson_date.date.isoweekday()) for lesson_date in self.lesson_date.all()[:4])
+
+    def display_teacher(self):
+        return ', '.join(teacher.name for teacher in self.teacher.all()[:4])
 
     display_group.short_description = 'Учебные группы'
     display_date.short_description = 'Даты проведения занятий'
+    display_teacher.short_description = 'Преподаватели'
