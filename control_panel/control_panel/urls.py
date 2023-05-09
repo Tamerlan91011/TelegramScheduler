@@ -21,5 +21,6 @@ from shedule import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('lessons/', views.AllLessons.as_view()),
-    path('lessons/<int:pk>/', views.SingleLesson.as_view())
+    path('lessons/group/<int:group_id>/week/<int:week_id>', views.GroupLessonsWeek.as_view()),
+    path('lessons/group/<int:group_id>/date/<int:date_id>', views.GroupLessonsDate.as_view()),
 ]
