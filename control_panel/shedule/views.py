@@ -32,5 +32,8 @@ class GroupLessonsWeek(APIView):
 
 class LessonDateByDate(APIView):
     def get(self, request, str_date):
-        lesson_date = LessonDate.objects.get(date=str_date)
+        try:
+            lesson_date = LessonDate.objects.get(date=str_date)
+        except:
+            return Response(status=400)
         return Response(LessonDateSerializer(lesson_date).data)
