@@ -5,7 +5,7 @@ from .models import User,Group
 
 class UserAdmin(admin.ModelAdmin):
     list_select_related = ["group"]
-    list_display = ["name", "student_card_number", "password", "telegram_chat_number", "group"]
+    list_display = ["name", "student_card_number", "group"]
 
 
 class UserGroup(admin.ModelAdmin):
